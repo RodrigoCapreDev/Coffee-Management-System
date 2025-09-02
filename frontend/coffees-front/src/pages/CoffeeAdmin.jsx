@@ -10,8 +10,9 @@ import {
 import CoffeeFormModal from "../components/CoffeeFormModal";
 import CoffeeList from "../components/CoffeeList";
 import CoffeeCard from "../components/CoffeeCard";
+import Header from "../components/Header";
 
-function App() {
+function CoffeesAdminPage() {
   const [coffees, setCoffees] = useState([]);
   const [loading, setLoading] = useState(true);
   const [viewMode, setViewMode] = useState("cards"); // 'cards' o 'list'
@@ -124,24 +125,35 @@ function App() {
   // Vista de cartas
   const CardView = () => (
     <div className="row g-4">
-      {coffees.map((coffee) => (
-        <CoffeeCard
-          key={coffee.id}
-          coffee={coffee}
-          onEdit={handleEdit}
-          onDelete={handleDelete}
-        />
-      ))}
+      {Array.isArray(coffees) ? (
+        coffees.map((coffee) => (
+          <CoffeeCard
+            key={coffee.id}
+            coffee={coffee}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+          />
+        ))
+      ) : (
+        <div className="row">
+          <div className="col-12 text-center">
+            <div className="alert alert-info" role="alert">
+              <h4 className="alert-heading">No hay cafés disponibles</h4>
+              <p>Agrega tu primer café usando el botón "Nuevo Café"</p>
+              <button className="btn btn-primary" onClick={handleCreate}>
+                <i className="bi bi-plus-circle me-2"></i>
+                Crear Primer Café
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 
   // Vista de lista
   const ListView = () => (
-    <CoffeeList
-      coffees={coffees}
-      onEdit={handleEdit}
-      onDelete={handleDelete}
-    />
+    <CoffeeList coffees={coffees} onEdit={handleEdit} onDelete={handleDelete} />
   );
 
   if (loading) {
@@ -157,55 +169,13 @@ function App() {
   return (
     <div className="container-fluid bg-light min-vh-100 py-4">
       <div className="container">
-        <div className="row mb-4">
-          <div className="col-md-6">
-            <h1 className="display-4 text-primary mb-2">☕ Gestión de Cafés</h1>
-            <p className="lead text-muted">Panel de administración</p>
-          </div>
-          <div className="col-md-6 d-flex justify-content-end align-items-center">
-            <button className="btn btn-success me-3" onClick={handleCreate}>
-              <i className="bi bi-plus-circle me-2"></i>
-              Nuevo Café
-            </button>
-            <div className="btn-group" role="group">
-              <button
-                className={`btn ${
-                  viewMode === "cards" ? "btn-primary" : "btn-outline-primary"
-                }`}
-                onClick={() => setViewMode("cards")}
-              >
-                <i className="bi bi-grid-3x3-gap"></i>
-              </button>
-              <button
-                className={`btn ${
-                  viewMode === "list" ? "btn-primary" : "btn-outline-primary"
-                }`}
-                onClick={() => setViewMode("list")}
-              >
-                <i className="bi bi-list"></i>
-              </button>
-            </div>
-          </div>
-        </div>
+        <Header
+          handleCreate={handleCreate}
+          viewMode={viewMode}
+          setViewMode={setViewMode}
+        />
 
-        {coffees.length === 0 ? (
-          <div className="row">
-            <div className="col-12 text-center">
-              <div className="alert alert-info" role="alert">
-                <h4 className="alert-heading">No hay cafés disponibles</h4>
-                <p>Agrega tu primer café usando el botón "Nuevo Café"</p>
-                <button className="btn btn-primary" onClick={handleCreate}>
-                  <i className="bi bi-plus-circle me-2"></i>
-                  Crear Primer Café
-                </button>
-              </div>
-            </div>
-          </div>
-        ) : viewMode === "cards" ? (
-          <CardView />
-        ) : (
-          <ListView />
-        )}
+        {viewMode === "cards" ? <CardView /> : <ListView />}
 
         <CoffeeFormModal
           showModal={showCoffeeFormModal}
@@ -227,4 +197,4 @@ function App() {
   );
 }
 
-export default App;
+export default CoffeesAdminPage;
