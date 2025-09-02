@@ -125,7 +125,7 @@ function CoffeesAdminPage() {
   // Vista de cartas
   const CardView = () => (
     <div className="row g-4">
-      {Array.isArray(coffees) ? (
+      {Array.isArray(coffees) && coffees.length > 0 ? (
         coffees.map((coffee) => (
           <CoffeeCard
             key={coffee.id}
