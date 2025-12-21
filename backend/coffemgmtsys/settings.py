@@ -33,6 +33,25 @@ ALLOWED_HOSTS = [
     "172.184.241.185",     # IP pública para acceder desde navegador
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',   #Documentación automática
+
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,   # Paginación
+
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+    ),   # Filtros y búsqueda
+}
+
+# Configuración de la documentación
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Coffee Management B2B API',
+    'DESCRIPTION': 'Catálogo mayorista de cafés de especialidad',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
 
 
 # Application definition
@@ -45,6 +64,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "drf_spectacular",
+    "django_filters",
     "corsheaders",
     "coffees",
 ]
