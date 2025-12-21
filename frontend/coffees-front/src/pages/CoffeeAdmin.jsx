@@ -37,7 +37,7 @@ function CoffeesAdminPage() {
     setLoading(true);
     getCoffees()
       .then((res) => {
-        setCoffees(res.data);
+        setCoffees(res.data.results);
         setLoading(false);
       })
       .catch((e) => {

@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 // Para levantar el frontend SIN Docker, cambia la URL por la del backend local, por ejemplo:
-// export const API_URL = 'http://localhost:8000/api/coffees/';
+export const API_URL = 'http://localhost:8000/api/v1/coffees/';
 // Si usas Docker y Nginx, deja la ruta relativa:
-export const API_URL = '/api/coffees/';
+//export const API_URL = '/api/v1/coffees/';
 
 export const getCoffees = () => axios.get(API_URL);
 export const getCoffee = (id) => axios.get(`${API_URL}${id}/`);
