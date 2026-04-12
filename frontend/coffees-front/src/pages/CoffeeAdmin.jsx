@@ -1,20 +1,13 @@
 import { useEffect, useState } from "react";
+import { useCoffees } from "../hooks/useCoffee";
 import DeleteConfirmModal from "../components/DeleteConfirmModal";
-import {
-  getCoffees,
-  getCoffee,
-  createCoffee,
-  updateCoffee,
-  deleteCoffee,
-} from "../api/coffeeApi";
 import CoffeeFormModal from "../components/CoffeeFormModal";
 import CoffeeList from "../components/CoffeeList";
 import CoffeeCard from "../components/CoffeeCard";
 import Header from "../components/Header";
 
 function CoffeesAdminPage() {
-  const [coffees, setCoffees] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { coffees, loading, error, addCoffee, editCoffee, removeCoffee } = useCoffees();
   const [viewMode, setViewMode] = useState("cards"); // 'cards' o 'list'
   const [showCoffeeFormModal, setShowCoffeeFormModal] = useState(false);
   const [editingCoffee, setEditingCoffee] = useState(null);
@@ -29,39 +22,20 @@ function CoffeesAdminPage() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [coffeeToDelete, setCoffeeToDelete] = useState(null);
 
-  useEffect(() => {
-    fetchCoffees();
-  }, []);
-
-  const fetchCoffees = () => {
-    setLoading(true);
-    getCoffees()
-      .then((res) => {
-        setCoffees(res.data.results);
-        setLoading(false);
-      })
-      .catch((e) => {
-        console.error(e);
-        setLoading(false);
-      });
-  };
-
-  const handleSubmitCoffeeForm = (e) => {
+  const handleSubmitCoffeeForm = async (e) => {
     e.preventDefault();
-    if (editingCoffee) {
-      updateCoffee(editingCoffee.id, formData)
-        .then(() => {
-          fetchCoffees();
-          handleCloseCoffeeFormModal();
-        })
-        .catch((e) => console.error(e));
-    } else {
-      createCoffee(formData)
-        .then(() => {
-          fetchCoffees();
-          handleCloseCoffeeFormModal();
-        })
-        .catch((e) => console.error(e));
+    try {
+      if (editingCoffee) {
+        await editCoffee(editingCoffee.id, formData);
+      } else {
+        await addCoffee(formData);
+      }
+      handleCloseCoffeeFormModal();
+    } catch (error) {
+      console.error("Error al enviar el formulario:", error);
+      alert(
+        "Ocurrió un error al guardar el café. Por favor, intenta nuevamente.",
+      );
     }
   };
 
@@ -71,19 +45,18 @@ function CoffeesAdminPage() {
     setShowDeleteModal(true);
   };
 
-  const handleConfirmDelete = () => {
+  const handleConfirmDelete = async () => {
     if (!coffeeToDelete) return;
-    deleteCoffee(coffeeToDelete.id)
-      .then(() => {
-        fetchCoffees();
-        setShowDeleteModal(false);
-        setCoffeeToDelete(null);
-      })
-      .catch((e) => {
-        console.error(e);
-        setShowDeleteModal(false);
-        setCoffeeToDelete(null);
-      });
+    try {
+      await removeCoffee(coffeeToDelete.id);
+      setShowDeleteModal(false);
+      setCoffeeToDelete(null);
+    } catch (error) {
+      console.error("Error al eliminar el café:", error);
+      alert(
+        "Ocurrió un error al eliminar el café. Por favor, intenta nuevamente.",
+      );
+    }
   };
 
   const cancelDelete = () => {
