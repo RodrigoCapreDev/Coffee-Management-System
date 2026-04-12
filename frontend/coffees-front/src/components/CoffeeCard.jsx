@@ -34,10 +34,9 @@ function CoffeeCard({ coffee, onEdit, onDelete }) {
             </ul>
           </div>
         </header>
-
-        <main className="card-body">
-          <p className="text-secondary small mb-3">{coffee.description}</p>
-          <div className="d-flex flex-wrap gap-2 mb-3">
+        <hr className="my-1 opacity-25 m-3"/>
+        <main className="card-body py-2">
+          <div className="d-flex flex-wrap gap-2 mb-2">
             <span className="badge rounded-pill bg-light text-dark border fw-medium">
               <i className="bi bi-geo-alt me-1 text-muted">
                 {coffee.origin || "N/A"}
@@ -49,7 +48,7 @@ function CoffeeCard({ coffee, onEdit, onDelete }) {
               {coffee.roast_level || "N/A"}
             </span>
           </div>
-
+          <p className="text-secondary small mb-2">{coffee.description}</p>
           {coffee.flavor_notes && (
             <p className="small-text text-muted mb-0 italic">
               <i className="bi bi-info-circle me-1"></i>

@@ -34,8 +34,33 @@
 }
 
 .coffee-card-custom {
+  max-width: 350px;
+  margin: 0 auto;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 16px !important;
+}
+
+.coffee-card-custom .card-header {
+  padding: 1.25rem 1.25rem 0.5rem !important;
+}
+
+.coffee-card-custom .card-text {
+  font-size: 0.85rem !important;
+  color: #6c757d;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.coffee-card-custom .card-title {
+  color: #2d3436;
+  letter-spacing: -0.02em;
+}
+
+.coffee-card-custom .text-secondary {
+  color: #636e72 !important;
+  line-height: 1.6;
 }
 
 .coffee-card-custom:hover {
@@ -43,17 +68,36 @@
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08) !important;
 }
 
-.badge.rounded-pill {
-  padding: 0.6em 1.2em;
+.coffee-card-custom .badge.rounded-pill {
+  background-color: #f8f9fa !important;
+  color: #636e72 !important;
+  border: none !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  padding: 6px 12px;
+}
+
+.note-text {
   font-size: 0.75rem;
+  color: #8e8e8e;
+  border-top: 1px solid #f8f9fa;
+  padding-top: 8px;
+}
+
+.coffee-card-custom .card-footer {
+  padding: 0.5rem 1.25rem 1.25rem !important;
+}
+
+.bg-primary-subtle {
+  background-color: #e0e7ff !important;
+  color: #4338ca !important;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
 }
 
 .btn-link {
   text-decoration: none;
-}
-
-.card {
-  padding: 2em;
 }
 
 .read-the-docs {
