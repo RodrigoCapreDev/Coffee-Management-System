@@ -1,22 +1,20 @@
-
 function CoffeeCard({ coffee, onEdit, onDelete }) {
   return (
     <div className="col-md-6 col-lg-4">
-      <div className="card h-100 shadow-sm border-0">
-        <div className="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-          <h5 className="card-title mb-0">
-            <i className="bi bi-cup-hot me-2"></i>
+      <div className="card h-100 shadow-sm border-0 coffee-card-custom">
+        <header className="card-header bg-white border-0 pt-4 d-flex justify-content-between align-items-center">
+          <h3 className="card-title h5 fw-bold mb-0 text-dark">
             {coffee.name}
-          </h5>
+          </h3>
           <div className="dropdown">
             <button
-              className="btn btn-sm btn-outline-light"
+              className="btn btn-link text-muted p-0"
               type="button"
               data-bs-toggle="dropdown"
             >
               <i className="bi bi-three-dots-vertical"></i>
             </button>
-            <ul className="dropdown-menu">
+            <ul className="dropdown-menu dropdown-menu-end shadow border-0">
               <li>
                 <button
                   className="dropdown-item"
@@ -35,29 +33,39 @@ function CoffeeCard({ coffee, onEdit, onDelete }) {
               </li>
             </ul>
           </div>
-        </div>
-        <div className="card-body d-flex flex-column">
-          <p className="card-text text-muted mb-3">{coffee.description}</p>
-          <div className="row g-2 mb-3">
-            <div className="col-6">
-              <span className="badge bg-secondary me-1">Origen</span>
-              <small className="text-muted d-block">{coffee.origin || "N/A"}</small>
-            </div>
-            <div className="col-6">
-              <span className="badge bg-secondary me-1">Tostado</span>
-              <small className="text-muted d-block">{coffee.roast_level || "N/A"}</small>
-            </div>
+        </header>
+
+        <main className="card-body">
+          <p className="text-secondary small mb-3">{coffee.description}</p>
+          <div className="d-flex flex-wrap gap-2 mb-3">
+            <span className="badge rounded-pill bg-light text-dark border fw-medium">
+              <i className="bi bi-geo-alt me-1 text-muted">
+                {coffee.origin || "N/A"}
+              </i>
+            </span>
+
+            <span className="badge rounded-pill bg-light text-dark border fw-medium">
+              <i className="bi bi-fire me-1 text-warning"></i>
+              {coffee.roast_level || "N/A"}
+            </span>
           </div>
+
           {coffee.flavor_notes && (
-            <div className="mb-3">
-              <span className="badge bg-info me-1">Notas de sabor</span>
-              <small className="text-muted d-block">{coffee.flavor_notes}</small>
-            </div>
+            <p className="small-text text-muted mb-0 italic">
+              <i className="bi bi-info-circle me-1"></i>
+              <span className="fw-semibold">Notas: </span>
+              {coffee.flavor_notes}
+            </p>
           )}
-          <div className="mt-auto">
-            <h4 className="text-success mb-0">${coffee.price}</h4>
+        </main>
+        <footer className="card-footer bg-white border-0 pb-4">
+          <div className="d-flex justify-content-between align-items-center">
+            <span className="text-success fs-4 fw-bold">${coffee.price}</span>
+            <span className="badge bg-primary-subtle text-primary border-0 px-3">
+              Especialidad
+            </span>
           </div>
-        </div>
+        </footer>
       </div>
     </div>
   );

@@ -33,6 +33,25 @@
   }
 }
 
+.coffee-card-custom {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 16px !important;
+}
+
+.coffee-card-custom:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08) !important;
+}
+
+.badge.rounded-pill {
+  padding: 0.6em 1.2em;
+  font-size: 0.75rem;
+}
+
+.btn-link {
+  text-decoration: none;
+}
+
 .card {
   padding: 2em;
 }
