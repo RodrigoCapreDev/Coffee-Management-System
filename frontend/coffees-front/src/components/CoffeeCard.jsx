@@ -63,9 +63,22 @@ function CoffeeCard({ coffee, onEdit, onDelete }) {
             </div>
 
             {/* Cara trasera de la carta (opcional para detalles adicionales) */}
-            <div className="flip-coffee-card-back border-0 h-100">
+            <div className="flip-coffee-card-back justify-content-between border-0 h-100 mt-2">
               <main className="card-body py-2">
+                <div className="roast-bar mb-2">
+                  <div className="roast-bar-track mb-2">
+                    <div
+                      className={`roast-bar-indicator roast--${coffee.roast_level?.toLowerCase()}`}
+                    ></div>
+                  </div>
+                  <div className="roast-bar-labels">
+                    <span>CLARO</span>
+                    <span>MEDIO</span>
+                    <span>OSCURO</span>
+                  </div>
+                </div>
                 <p className="text small mb-2">{coffee.description}</p>
+
                 {/*
                 <div className="d-flex flex-wrap gap-2 mb-2">
                   <span className="badge rounded-pill bg-light text-dark border fw-medium">

@@ -83,7 +83,7 @@
   padding: 1.5rem;
 }
 
-.flip-coffee-card-back p {
+.flip-coffee-card-back p, .roast-bar-title{
   color: #f8f9fa;
   font-size: 0.85rem;
   font-weight: 700;
@@ -99,6 +99,41 @@
 .coffee-card-footer .coffee-name {
   color: #3d2b1f;
 }
+
+.roast-bar-track {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  position: relative;
+  border-radius: 2px;
+}
+
+.roast-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: 'Barlow Condensed', sans-serif;
+  margin-bottom: 0.4rem;
+}
+
+.roast-bar-indicator {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 1px;
+  height: 8px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: left 0.3s ease;
+}
+
+.roast--claro   { left: 15%; }
+.roast--medio   { left: 50%; }
+.roast--oscuro  { left: 85%; }
 
 /*
 .flip-coffee-card .card-text {
