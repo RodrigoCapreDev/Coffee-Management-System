@@ -7,7 +7,8 @@ import CoffeeCard from "../components/CoffeeCard";
 import Header from "../components/Header";
 
 function CoffeesAdminPage() {
-  const { coffees, loading, error, addCoffee, editCoffee, removeCoffee } = useCoffees();
+  const { coffees, loading, error, addCoffee, editCoffee, removeCoffee } =
+    useCoffees();
   const [viewMode, setViewMode] = useState("cards"); // 'cards' o 'list'
   const [showCoffeeFormModal, setShowCoffeeFormModal] = useState(false);
   const [editingCoffee, setEditingCoffee] = useState(null);
@@ -140,32 +141,30 @@ function CoffeesAdminPage() {
   }
 
   return (
-    <div className="container-fluid bg-light min-vh-100 py-4">
-      <div className="container">
-        <Header
-          handleCreate={handleCreate}
-          viewMode={viewMode}
-          setViewMode={setViewMode}
-        />
+    <div className="container">
+      <Header
+        handleCreate={handleCreate}
+        viewMode={viewMode}
+        setViewMode={setViewMode}
+      />
 
-        {viewMode === "cards" ? <CardView /> : <ListView />}
+      {viewMode === "cards" ? <CardView /> : <ListView />}
 
-        <CoffeeFormModal
-          showModal={showCoffeeFormModal}
-          handleCloseModal={handleCloseCoffeeFormModal}
-          formData={formData}
-          setFormData={setFormData}
-          handleSubmit={handleSubmitCoffeeForm}
-          editingCoffee={editingCoffee}
-        />
+      <CoffeeFormModal
+        showModal={showCoffeeFormModal}
+        handleCloseModal={handleCloseCoffeeFormModal}
+        formData={formData}
+        setFormData={setFormData}
+        handleSubmit={handleSubmitCoffeeForm}
+        editingCoffee={editingCoffee}
+      />
 
-        <DeleteConfirmModal
-          show={showDeleteModal}
-          onConfirm={handleConfirmDelete}
-          onCancel={cancelDelete}
-          coffeeToDelete={coffeeToDelete}
-        />
-      </div>
+      <DeleteConfirmModal
+        show={showDeleteModal}
+        onConfirm={handleConfirmDelete}
+        onCancel={cancelDelete}
+        coffeeToDelete={coffeeToDelete}
+      />
     </div>
   );
 }
