@@ -3,13 +3,14 @@ import Layout from "./Layout.jsx";
 import AdminLayout from "./Layouts/AdminLayout.jsx";
 import AdminInventory from "./pages/AdminInventory.jsx";
 import CoffeeAdmin from "./pages/CoffeeAdmin.jsx";
+import HomePage from "./pages/HomePage.jsx";
 import "./App.css";
 
 function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route path="/" element={<CoffeeAdmin />} />
+        <Route path="/" element={<HomePage />} />
         <Route element={<AdminLayout />}>
           <Route path="/admin" element={<Navigate to="/admin/inventario" />} />
           <Route path="/admin/inventario" element={<AdminInventory />} />

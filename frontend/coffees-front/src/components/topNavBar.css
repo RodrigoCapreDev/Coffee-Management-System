@@ -20,6 +20,17 @@ nav.navbar {
   text-decoration: none;
 }
 
+.navbar-brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.navbar-brand-link:hover {
+  text-decoration: none;
+}
+
 .navbar-logo {
   font-size: 1.1rem;
 }
@@ -52,5 +63,9 @@ nav.navbar {
 }
 
 .navbar-links a:hover {
+  color: #ffffff;
+}
+
+.navbar-links a.active {
   color: #ffffff;
 }
