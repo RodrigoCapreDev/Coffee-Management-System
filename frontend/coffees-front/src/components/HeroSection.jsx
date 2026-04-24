@@ -1,5 +1,4 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
 import { Link } from "react-router-dom";
 import "./heroSection.css";
 
@@ -44,18 +43,17 @@ const IMAGES = [
 ];
 
 function ParallaxImage({ src, style, speed }) {
-  const ref = useRef(null);
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 1000], [0, -1000 * speed]);
 
   return (
-    <motion.div ref={ref} className="hero-collage-img" style={{ ...style, y }}>
+    <motion.div className="hero-collage-img" style={{ ...style, y }}>
       <img src={src} alt="" />
     </motion.div>
   );
 }
 
-function HeroSection() {
+function HeroSection({onVerCatalogo}) {
   return (
     <section className="hero">
       <div className="hero-collage">
@@ -92,9 +90,9 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.35 }}
         >
-          <Link to="/catalogo" className="hero-cta">
+          <button className="hero-cta" onClick={onVerCatalogo}>
             VER CATÁLOGO
-          </Link>
+          </button>
         </motion.div>
       </div>
     </section>

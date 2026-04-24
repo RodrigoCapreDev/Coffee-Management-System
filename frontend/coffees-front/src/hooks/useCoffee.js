@@ -22,20 +22,20 @@ export const useCoffees = () => {
     fetchCoffees();
   }, []);
 
-  const addCoffee = async (data) => {
+  const onAddCoffee = async (data) => {
     await createCoffee(data);
     await fetchCoffees();
   };
 
-  const editCoffee = async (id, data) => {
+  const onEditCoffee = async (id, data) => {
     await updateCoffee(id, data);
     await fetchCoffees();
   };
 
-  const removeCoffee = async (id) => {
+  const onDeleteCoffee = async (id) => {
     await deleteCoffee(id);
     await fetchCoffees();
   };
 
-  return { coffees, loading, error, addCoffee, editCoffee, removeCoffee };
+  return { coffees, loading, error, onAddCoffee, onEditCoffee, onDeleteCoffee };
 };
