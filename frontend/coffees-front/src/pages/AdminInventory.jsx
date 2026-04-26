@@ -12,7 +12,7 @@ import PageHeader from "../components/PageHeader";
 import "./adminInventory.css";
 
 function AdminInventory() {
-  const { coffees, loading, error, addCoffee, editCoffee, removeCoffee } =
+  const { coffees, loading, error, onAddCoffee, onEditCoffee, onDeleteCoffee } =
     useCoffees();
   const [showCoffeeFormModal, setShowCoffeeFormModal] = useState(false);
   const [editingCoffee, setEditingCoffee] = useState(null);
@@ -75,9 +75,9 @@ function AdminInventory() {
     e.preventDefault();
     try {
       if (editingCoffee) {
-        await editCoffee(editingCoffee.id, formData);
+        await onEditCoffee(editingCoffee.id, formData);
       } else {
-        await addCoffee(formData);
+        await onAddCoffee(formData);
       }
       handleCloseCoffeeFormModal();
     } catch (error) {
@@ -97,7 +97,7 @@ function AdminInventory() {
   const handleConfirmDelete = async () => {
     if (!coffeeToDelete) return;
     try {
-      await removeCoffee(coffeeToDelete.id);
+      await onDeleteCoffee(coffeeToDelete.id);
       setShowDeleteModal(false);
       setCoffeeToDelete(null);
     } catch (error) {
