@@ -1,106 +1,124 @@
+.coffee-name,
+.coffee-price,
+.coffee-card-origin span,
+.coffee-card-description,
+.coffee-card-notes,
+.roast-bar-labels span,
+.coffee-card-btn,
+.roast-bar-labels {
+  font-family: 'Space Mono', monospace;
+}
+
+.coffee-name,
+.coffee-price,
+.coffee-card-notes,
+.coffee-card-btn {
+  color: #3d2b1f;
+}
+
+.coffee-card-notes,
+.coffee-card-origin,
+.coffee-card-btn,
+.roast-bar-labels {
+  text-transform: uppercase;
+}
+
 .coffee-card {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
+  align-content: space-between;
   background: #ffffff;
   border: 1px solid rgba(61, 43, 31, 0.08);
-  border-radius: 4px;
+  border-radius: 16px;
   overflow: hidden;
+  width: 280px;
+  height: 100%;
 }
 
 .coffee-card-image-wrapper {
   position: relative;
-  height: 200px;
+  height: 320px;
   overflow: hidden;
-  background: #f5f0eb;
+  background: transparent;
+  flex-shrink: 0;
 }
 
-.coffee-card:hover .coffee-card-image {
-  transform: scale(1.08);
+.coffee-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 1.5rem 1rem;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 8px 24px rgba(61, 43, 31, 0.18));
 }
 
-.coffee-card-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(45, 26, 12, 0.82);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.coffee-card:hover .coffee-card-overlay {
-  opacity: 1;
-}
-
-.coffee-card-description {
-  color: rgba(248, 249, 250, 0.9);
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  line-height: 1.8;
-  margin: 0 0 1.5rem 0;
-}
-
-.coffee-card-notes {
-  color: rgba(255, 255, 255, 0.5);
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  text-align: center;
-  margin: 0 0 1.25rem 0;
+.origin-icon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  opacity: 0.6;
+  margin-right: 0.4rem;
 }
 
 .coffee-card-footer {
+  text-align: start;
+  flex: 1;
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.25rem;
-  border-top: 1px solid rgba(61, 43, 31, 0.08);
+  padding: 1rem 1.1rem 1.1rem;
+  gap: 0.3rem;
+}
+
+.coffee-card-specs {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  color: #888880;
+}
+
+.coffee-card-notes,
+.coffee-card-origin,
+.coffee-name,
+.roast-bar-labels {
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  margin: 0 0 1.25rem 0;
+}
+
+.coffee-name,
+.roast-bar-labels {
+  font-size: 0.65rem;
+}
+
+.coffee-card-notes,
+.coffee-card-origin
+{
+font-size: 0.75rem;
 }
 
 .coffee-name {
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #3d2b1f;
-  margin: 0 0 0 0.2rem 0;
-}
-
-.coffee-card-origin {
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(61, 43, 31, 0.35);
+  letter-spacing: 0.05em;
+  margin: 0 0 0.2rem 0;
 }
 
 .coffee-price {
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 700;
-  color: #3d2b1f;
+  letter-spacing: 0.06em;
 }
 
 .roast-bar {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .roast-bar-track {
   width: 100%;
   height: 1px;
-  background: rgba(255, 255, 255, 0.2);
   position: relative;
+  background: rgba(61, 43, 31, 0.25);
   border-radius: 0;
   margin-bottom: 0.5rem;
 }
@@ -108,12 +126,6 @@
 .roast-bar-labels {
   display: flex;
   justify-content: space-between;
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 0.55rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  font-family: "Barlow Condensed", sans-serif;
 }
 
 .roast-bar-indicator {
@@ -122,16 +134,37 @@
   transform: translate(-50%, -50%);
   width: 2px;
   height: 6px;
-  background: #ffffff;
+  background: #888880;
   border-radius: 1px;
+}
+
+.coffee-card-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: transparent;
+  border: 1.5px solid rgba(61, 43, 31, 0.25);
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 0.75rem;
+}
+
+.coffee-card-image-wrapper:hover .coffee-card-image {
+  transform: scale(1.06) translateY(-6px);
+  cursor: pointer;
 }
 
 .roast--claro {
   left: 15%;
 }
+
 .roast--medio {
   left: 50%;
 }
+
 .roast--oscuro {
   left: 85%;
 }

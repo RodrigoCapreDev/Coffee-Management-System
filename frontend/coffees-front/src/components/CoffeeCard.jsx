@@ -1,4 +1,5 @@
 import coffeePackageImage from "../assets/coffee_package.png";
+import globeIcon from "../assets/globeIcon.png";
 import "./coffeeCard.css";
 
 function CoffeeCard({ coffee, onEdit, onDelete }) {
@@ -10,11 +11,23 @@ function CoffeeCard({ coffee, onEdit, onDelete }) {
           alt={coffee.name}
           className="coffee-card-image"
         />
-        <div className="coffee-card-overlay">
-          <p className="coffee-card-description">{coffee.description}</p>
+      </div>
+
+      <div className="coffee-card-footer">
+        <div className="coffee-name">
+          <h3>{coffee.name}</h3>
+        </div>
+        <div className="coffee-card-specs">
+          {coffee.origin && (
+            <div className="coffee-card-origin">
+              <img src={globeIcon} alt="" className="origin-icon" />
+              <span>{coffee.origin}</span>
+            </div>
+          )}
           {coffee.flavor_notes && (
             <p className="coffee-card-notes">{coffee.flavor_notes}</p>
           )}
+          {/*<p className="coffee-card-description">{coffee.description}</p>*/}
           <div className="roast-bar">
             <div className="roast-bar-track">
               <div
@@ -27,15 +40,13 @@ function CoffeeCard({ coffee, onEdit, onDelete }) {
               <span>OSCURO</span>
             </div>
           </div>
+          <span className="coffee-price">${coffee.price}</span>
         </div>
-      </div>
-
-      <div className="coffee-card-footer">
-        <div className="coffee-name">
-          <h3>{coffee.name}</h3>
-          <span className="coffee-card-origin">{coffee.origin || "N/A"}</span>
+        <div className="coffee-card-actions">
+          <button className="coffee-card-btn" disabled title="Próximamente">
+            VER MÁS
+          </button>
         </div>
-        <span className="coffee-price">${coffee.price}</span>
       </div>
     </div>
   );
