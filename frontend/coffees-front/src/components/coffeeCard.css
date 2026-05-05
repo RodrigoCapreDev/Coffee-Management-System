@@ -6,7 +6,7 @@
 .roast-bar-labels span,
 .coffee-card-btn,
 .roast-bar-labels {
-  font-family: 'Space Mono', monospace;
+  font-family: "Space Mono", monospace;
 }
 
 .coffee-name,
@@ -29,7 +29,7 @@
   flex-direction: column;
   align-content: space-between;
   background: #ffffff;
-  border: 1px solid rgba(61, 43, 31, 0.08);
+  border: 1px solid rgba(61, 43, 31, 0.2);
   border-radius: 16px;
   overflow: hidden;
   width: 280px;
@@ -38,7 +38,7 @@
 
 .coffee-card-image-wrapper {
   position: relative;
-  height: 320px;
+  height: 280px;
   overflow: hidden;
   background: transparent;
   flex-shrink: 0;
@@ -81,33 +81,35 @@
 
 .coffee-card-notes,
 .coffee-card-origin,
-.coffee-name,
-.roast-bar-labels {
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  margin: 0 0 1.25rem 0;
+.roast-bar-labels,
+.coffee-name {
+  margin: 0 0 1rem 0;
 }
 
-.coffee-name,
+.coffee-card-notes,
+.coffee-card-origin,
+.roast-bar-labels,
+.coffee-price {
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
 .roast-bar-labels {
   font-size: 0.65rem;
 }
 
 .coffee-card-notes,
-.coffee-card-origin
-{
-font-size: 0.75rem;
+.coffee-card-origin {
+  font-size: 0.75rem;
 }
 
 .coffee-name {
-  letter-spacing: 0.05em;
-  margin: 0 0 0.2rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .coffee-price {
   font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
 }
 
 .roast-bar {
@@ -148,8 +150,14 @@ font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   margin-top: 0.75rem;
+}
+
+.coffee-card-btn:hover {
+  background: #3d2b1f;
+  color: #ffffff;
+  border-color: #3d2b1f;
 }
 
 .coffee-card-image-wrapper:hover .coffee-card-image {

@@ -15,7 +15,7 @@ function CoffeeCard({ coffee, onEdit, onDelete }) {
 
       <div className="coffee-card-footer">
         <div className="coffee-name">
-          <h3>{coffee.name}</h3>
+          <span>{coffee.name}</span>
         </div>
         <div className="coffee-card-specs">
           {coffee.origin && (
