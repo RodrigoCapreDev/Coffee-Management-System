@@ -17,11 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from coffees.views import CoffeeViewSet
+from coffees.views import CoffeeViewSet, OriginViewSet
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 router=routers.DefaultRouter()
 router.register(r'coffees', CoffeeViewSet)
+router.register(r'origins', OriginViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
