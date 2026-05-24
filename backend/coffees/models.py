@@ -37,14 +37,24 @@ class Coffee(models.Model):
         Origin, on_delete=models.SET_NULL, related_name="coffees", null=True
     )
 
-    #--- comercial ---
+    # --- comercial ---
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    weight_grams= models.PositiveIntegerField(
+    weight_grams = models.PositiveIntegerField(
         default=250, help_text="Peso del paquete en gramos"
     )
     stock = models.PositiveIntegerField(default=0)
     is_available = models.BooleanField(default=True)
-    
+
+    # --- Brew ---
+    recommended_brew = models.CharField(
+        max_length=200, blank=True, help_text="Ej: Chemex, Espresso, French Press"
+    )
+    grind_size = models.CharField(
+        max_length=100, blank=True, help_text="Ej: Fine, Medium-Coarse"
+    )
+    brew_temp_celsius = models.PositiveSmallIntegerField(
+        null=True, blank=True, help_text="Temperatura de extracción recomendada en °C"
+    )
 
     def __str__(self):
         return self.name
