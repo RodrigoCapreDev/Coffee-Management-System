@@ -56,5 +56,9 @@ class Coffee(models.Model):
         null=True, blank=True, help_text="Temperatura de extracción recomendada en °C"
     )
 
+    class Meta:
+        ordering = ["name"]
+        verbose_name_plural = "Coffees"
+        
     def __str__(self):
         return self.name
